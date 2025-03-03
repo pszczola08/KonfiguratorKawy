@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Konfigurator Kawy</string>
+
+    <string-array name="coffee_list">
+        <item>Wybierz</item>
+        <item>Espresso</item>
+        <item>Americano</item>
+        <item>Latte</item>
+        <item>Cappuccino</item>
+        <item>Flat White</item>
+        <item>Macciato</item>
+        <item>Mocha</item>
+        <item>Irish Coffee</item>
+    </string-array>
+</resources>
