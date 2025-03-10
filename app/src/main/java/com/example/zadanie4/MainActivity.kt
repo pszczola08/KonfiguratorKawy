@@ -2,6 +2,7 @@ package com.example.zadanie4
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.Button
@@ -10,12 +11,14 @@ import android.widget.ImageView
 import android.widget.SeekBar
 import android.widget.Spinner
 import android.widget.TextView
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -31,7 +34,17 @@ class MainActivity : AppCompatActivity() {
         val count = findViewById<SeekBar>(R.id.count)
         val countText = findViewById<TextView>(R.id.countText)
         val mainCoffeeImage = findViewById<ImageView>(R.id.main_coffee_image)
-        val SubmitBtn = findViewById<Button>(R.id.btn_submit)
+
+        val submitBtn = findViewById<Button>(R.id.btn_submit)
+
+
+        submitBtn.setOnClickListener {
+            Toast.makeText(this, "Tekst", Toast.LENGTH_LONG).show()
+            val intent = Intent(this@MainActivity, OrderActivity::class.java)
+            startActivity(intent)
+        }
+
+
         count.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 countText.text = progress.toString()
@@ -56,11 +69,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) { }
-        }
-
-        SubmitBtn.setOnClickListener {
-            val intent = Intent(this, OrderActivity::class.java)
-            startActivity(intent)
         }
     }
 }
