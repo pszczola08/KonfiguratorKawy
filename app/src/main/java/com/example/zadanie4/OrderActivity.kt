@@ -1,5 +1,6 @@
 package com.example.zadanie4
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -23,5 +24,17 @@ class OrderActivity : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+
+        val coffee = intent.getStringExtra("coffee")
+        val sugar = if(intent.getBooleanExtra("sugar", true)) "Tak" else "Nie"
+        val count = intent.getStringExtra("count")
+
+        val textCoffee = findViewById<TextView>(R.id.text_coffee)
+        val textSugar = findViewById<TextView>(R.id.text_sugar)
+        val textCount = findViewById<TextView>(R.id.text_count)
+
+        textCoffee.text = "Wybrana Kawa: $coffee"
+        textSugar.text = "Cukier? $sugar"
+        textCount.text = "Ilość Kaw: $count"
     }
 }

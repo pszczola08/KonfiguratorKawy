@@ -37,14 +37,6 @@ class MainActivity : AppCompatActivity() {
 
         val submitBtn = findViewById<Button>(R.id.btn_submit)
 
-
-        submitBtn.setOnClickListener {
-            Toast.makeText(this, "Tekst", Toast.LENGTH_LONG).show()
-            val intent = Intent(this@MainActivity, OrderActivity::class.java)
-            startActivity(intent)
-        }
-
-
         count.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 countText.text = progress.toString()
@@ -69,6 +61,14 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onNothingSelected(parent: AdapterView<*>?) { }
+        }
+
+        submitBtn.setOnClickListener {
+            val intent = Intent(this@MainActivity, OrderActivity::class.java)
+            intent.putExtra("coffee", coffee.getSelectedItem().toString())
+            intent.putExtra("sugar", sugar.isChecked)
+            intent.putExtra("count", count.progress.toString())
+            startActivity(intent)
         }
     }
 }
